@@ -13,6 +13,8 @@ services:
       memlock:
         soft: -1
         hard: -1
+    volumes:
+      - esdata01:/usr/share/elasticsearch/data
 
   appsearch:
     image: docker.elastic.co/enterprise-search/enterprise-search:7.8.0
@@ -24,3 +26,7 @@ services:
       elasticsearch.password: changeme
       allow_es_settings_modification: 'true'
       secret_management.encryption_keys: '[4a2cd3f81d39bf28738c10db0ca782095ffac07279561809eecc722e0c20eb09]'
+
+volumes:
+    esdata01:
+      driver: local
