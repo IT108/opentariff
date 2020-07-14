@@ -12,8 +12,9 @@ def index():
 
 @app.route('/api/tariff_search', methods=['POST'])
 def search():
-    print(request.form)
-    return engine.search(request.form['query'])
+    # print(request.form)
+    search_result = engine.search(request.form['query'])
+    return render_template('list_template.html', items=search_result['results'])
 
 
 if __name__ == '__main__':

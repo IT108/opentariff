@@ -1,16 +1,18 @@
 function onFind() {
-    /*TODO: make find requests*/
     $.ajax({
         type: "POST",
         url: '/api/tariff_search',
         data: {'query': document.getElementById('treatment').value},
         success: function (e) {
-            console.log(e.results)
+            document.getElementById('list-tab').innerHTML = e;
+            $('#list-tab a').on('click', function (e) {
+                select_tariff(e.target.name)
+            })
         }
     })
 }
 
-$('#list-tab a').on('click', function (e) {
-    /*TODO: tarif show*/
-    console.log(e.target.name)
-})
+function select_tariff(tariff_id) {
+    console.log(tariff_id)
+    document.getElementById('treatment').value
+}

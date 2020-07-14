@@ -3,6 +3,7 @@ from elastic_app_search import Client
 import constants
 
 client = Client()
+pagesize = 10
 
 
 def init():
@@ -15,6 +16,5 @@ def init():
 
 
 def search(query):
-    a = client.search(constants.search_engine_name, query, {"page": {"size": 5, "current": 1}})
-    print(a)
+    a = client.search(constants.search_engine_name, query, {"page": {"size": pagesize, "current": 1}})
     return a
