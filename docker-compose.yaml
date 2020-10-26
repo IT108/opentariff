@@ -1,11 +1,11 @@
 version: '3'
 services:
-  gateway:
+  opentariff:
     image: docker.pkg.github.com/it108/opentariff/opentariff:${GITHUB_SHA}
     container_name: opentariff
     restart: always
     environment:
-      SEARCH_ENDPOINT: ${OT_APPSEARCH_ENDPOINT}
+      SEARCH_ENDPOINT: ${OT_APPSEARCH_ENDPOINT}:3002/api/as/v1
       SEARCH_API_KEY: ${SEARCH_API_KEY}
       SEARCH_ENGINE_NAME: ${SEARCH_ENGINE_NAME}
     ports:
