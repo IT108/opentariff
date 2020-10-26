@@ -1,5 +1,5 @@
 import os
-from devtools.constants import file_fix_dict
+from app.app.devtools.constants import file_fix_dict
 
 templates_dir = '../templates/'
 to_change_dict = file_fix_dict
@@ -45,7 +45,6 @@ def fix_files():
         if not os.path.isfile(path):
             continue
 
-        q = 0
         f = open(path, 'r', encoding='utf-8')
         data = f.read()
         q = check_file(data)

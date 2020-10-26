@@ -1,8 +1,6 @@
-from flask import Flask, render_template, request
-from search import engine
-
-app = Flask(__name__)
-engine.init()
+from flask import render_template, request
+from app.search import engine
+from app import app
 
 
 @app.route('/')
@@ -13,6 +11,11 @@ def index():
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+
+@app.route('/find-tariff')
+def find_tariff():
+    return render_template('find-tariff.html')
 
 
 @app.route('/api/tariff_search', methods=['POST'])
@@ -28,7 +31,3 @@ def get_tariff():
     res = {'result': search_result}
     print(res)
     return res
-
-
-if __name__ == '__main__':
-    app.run()

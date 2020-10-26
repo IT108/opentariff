@@ -1,0 +1,19 @@
+version: '3'
+services:
+  gateway:
+    image: docker.pkg.github.com/io112/opentariff/opentariff:${GITHUB_SHA}
+    container_name: opentariff
+    restart: always
+    environment:
+      SEARCH_ENDPOINT: ${SEARCH_ENDPOINT}
+      SEARCH_API_KEY: ${SEARCH_API_KEY}
+      SEARCH_ENGINE_NAME: ${SEARCH_ENGINE_NAME}
+    ports:
+    - "${OT_PORT}:80"
+    networks:
+      - ot
+
+networks:
+  ot:
+    external:
+      name: opentariff_network_prod

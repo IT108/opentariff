@@ -1,6 +1,6 @@
 from elastic_app_search import Client
 
-import constants
+import app.constants as constants
 
 client = Client()
 pagesize = 10
