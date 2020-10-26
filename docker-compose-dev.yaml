@@ -1,6 +1,18 @@
-version: "3"
-
+version: '3'
 services:
+  opentariff:
+    image: opentariff
+    container_name: opentariff
+    restart: always
+    environment:
+      SEARCH_ENDPOINT: ${OT_APPSEARCH_ENDPOINT}:3002/api/as/v1
+      SEARCH_API_KEY: ${SEARCH_API_KEY}
+      SEARCH_ENGINE_NAME: tariffs
+    ports:
+    - "8081:80"
+    networks:
+      - ot
+
   elasticsearch:
     hostname: elasticsearch
     image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
@@ -18,7 +30,7 @@ services:
       - esdata01:/usr/share/elasticsearch/data
     networks:
       ot:
-        ipv4_address: ${OT_ELASTICSEARCH_ENDPOINT}
+        ipv4_address: 172.19.0.3
 
   appsearch:
     hostname: appsearch
@@ -29,13 +41,13 @@ services:
       elasticsearch.host: http://elasticsearch:9200
       elasticsearch.username: elastic
       elasticsearch.password: changeme
-      ent_search.external_url: http://${OT_APPSEARCH_ENDPOINT}:3002
-      ent_search.listen_host: ${OT_APPSEARCH_ENDPOINT}
+      ent_search.external_url: http://172.19.0.2:3002
+      ent_search.listen_host: 172.19.0.2
       allow_es_settings_modification: 'true'
       secret_management.encryption_keys: '[4a2cd3f81d39bf28738c10db0ca782095ffac07279561809eecc722e0c20eb09]'
     networks:
       ot:
-        ipv4_address: ${OT_APPSEARCH_ENDPOINT}
+        ipv4_address: 172.19.0.2
 
 networks:
   ot:

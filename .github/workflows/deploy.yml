@@ -1,0 +1,40 @@
+name: Production pipeline
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: it108/opentariff/opentariff
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_TOKEN }}
+          registry: docker.pkg.github.com
+          tags: "latest,${{ github.SHA }}"
+
+  deploy:
+    runs-on: whale
+    needs: build
+    steps:
+      - uses: actions/checkout@master
+      - name: Login to packages
+        run: |
+          echo  ${{ secrets.REGISTRY_TOKEN }} |  docker login docker.pkg.github.com -u ${{ github.ACTOR }} --password-stdin
+      - name: deploy
+        env:
+          OT_APPSEARCH_ENDPOINT: ${{ secrets.OT_APPSEARCH_ENDPOINT }}
+          OT_PORT: ${{ secrets.OT_PORT }}
+          SEARCH_API_KEY: ${{ secrets.SEARCH_API_KEY }}
+          SEARCH_ENGINE_NAME: ${{ secrets.SEARCH_ENGINE_NAME }}
+          OT_ELASTICSEARCH_ENDPOINT: ${{ secrets.OT_ELASTICSEARCH_ENDPOINT }}
+        run: |
+          docker-compose up -d
