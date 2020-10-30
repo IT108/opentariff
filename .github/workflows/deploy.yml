@@ -33,7 +33,7 @@ jobs:
         env:
           OT_APPSEARCH_ENDPOINT: ${{ secrets.OT_APPSEARCH_ENDPOINT }}
           OT_PORT: ${{ secrets.OT_PORT }}
-          SEARCH_API_KEY: ${{ secrets.SEARCH_API_KEY }}
+          SEARCH_API_KEY: ${{ secrets.SEARCH_API_KEY_PROD }}
           SEARCH_ENGINE_NAME: ${{ secrets.SEARCH_ENGINE_NAME }}
           OT_ELASTICSEARCH_ENDPOINT: ${{ secrets.OT_ELASTICSEARCH_ENDPOINT }}
         run: |
