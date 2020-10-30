@@ -1183,6 +1183,14 @@
   font-size: 13px;
 }
 
+.success-message {
+  background-color: transparent;
+}
+
+.error-message {
+  background-color: transparent;
+}
+
 @media screen and (max-width: 991px) {
   .div-block-53 {
     width: 90%;

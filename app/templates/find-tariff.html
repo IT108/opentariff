@@ -1,5 +1,5 @@
 <!DOCTYPE html><!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Fri Oct 30 2020 10:40:48 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Fri Oct 30 2020 12:33:08 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="5ec10080ce123c670973dbb8" data-wf-site="5ec10080ce123ca6bf73dbb7">
 <head>
   <meta charset="utf-8">
@@ -39,12 +39,8 @@
         <form id="email-form" name="email-form" data-name="Email Form"><label for="city-select-2" class="field-label-3">Ваш регион</label><select id="city-select" name="city-select" required="" data-name="City Select" class="select-field-2 w-select">
             <option value="0">Санкт-Петербург</option>
           </select><label for="treatment" class="field-label-3">Название лечения</label><input type="text" class="w-input" maxlength="256" name="treatment" data-name="treatment" id="treatment" required=""></form>
-        <div class="w-form-done">
-          <div>Thank you! Your submission has been received!</div>
-        </div>
-        <div class="w-form-fail">
-          <div>Oops! Something went wrong while submitting the form.</div>
-        </div>
+        <div class="success-message w-form-done"></div>
+        <div class="error-message w-form-fail"></div>
       </div>
       <div class="w-embed w-script">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
