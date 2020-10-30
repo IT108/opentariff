@@ -8,6 +8,8 @@ services:
       SEARCH_ENDPOINT: ${OT_APPSEARCH_ENDPOINT}:3002/api/as/v1
       SEARCH_API_KEY: ${SEARCH_API_KEY}
       SEARCH_ENGINE_NAME: tariffs
+      BRANCH: ${BRANCH}
+      COMMIT: ${COMMIT}
     ports:
     - "8081:80"
     networks:

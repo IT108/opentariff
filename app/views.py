@@ -1,21 +1,22 @@
 from flask import render_template, request
 from app.search import engine
 from app import app
+import app.config as cfg
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', **cfg.params)
 
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', **cfg.params)
 
 
 @app.route('/find-tariff')
 def find_tariff():
-    return render_template('find-tariff.html')
+    return render_template('find-tariff.html', **cfg.params)
 
 
 @app.route('/api/tariff_search', methods=['POST'])

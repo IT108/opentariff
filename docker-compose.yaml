@@ -8,6 +8,8 @@ services:
       SEARCH_ENDPOINT: ${OT_APPSEARCH_ENDPOINT}:3002/api/as/v1
       SEARCH_API_KEY: ${SEARCH_API_KEY}
       SEARCH_ENGINE_NAME: ${SEARCH_ENGINE_NAME}
+      BRANCH: ${BRANCH}
+      COMMIT: ${COMMIT}
     ports:
     - "${OT_PORT}:80"
     networks:

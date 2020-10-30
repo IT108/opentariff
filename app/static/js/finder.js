@@ -1,4 +1,5 @@
 document.getElementById('treatment').addEventListener("input", onFind)
+document.getElementById('treatment').addEventListener("submit", onFind)
 
 
 function onFind() {
