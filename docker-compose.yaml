@@ -35,8 +35,6 @@ services:
   appsearch:
     hostname: appsearch
     image: docker.elastic.co/enterprise-search/enterprise-search:7.8.0
-    ports:
-      - "3002:3002"
     environment:
       elasticsearch.host: http://elasticsearch:9200
       elasticsearch.username: elastic
