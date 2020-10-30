@@ -36,5 +36,7 @@ jobs:
           SEARCH_API_KEY: ${{ secrets.SEARCH_API_KEY_PROD }}
           SEARCH_ENGINE_NAME: ${{ secrets.SEARCH_ENGINE_NAME }}
           OT_ELASTICSEARCH_ENDPOINT: ${{ secrets.OT_ELASTICSEARCH_ENDPOINT }}
+          BRANCH: master
+          COMMIT: ${{ github.SHA }}
         run: |
           docker-compose up -d
