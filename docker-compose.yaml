@@ -29,8 +29,7 @@ services:
     volumes:
       - esdata01:/usr/share/elasticsearch/data
     networks:
-      ot:
-        ipv4_address: ${OT_ELASTICSEARCH_ENDPOINT}
+      - ot
 
   appsearch:
     hostname: appsearch
