@@ -22,7 +22,7 @@ jobs:
           tags: "latest,${{ github.SHA }}"
 
   deploy:
-    runs-on: OpenTariff
+    runs-on: whale
     needs: build
     steps:
       - uses: actions/checkout@master
